@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FM del Viento - En Vivo</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0a0a0a, #1c1c1c);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.player {
+    background: #111;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 0 25px rgba(255,0,0,0.3);
+    max-width: 350px;
+    width: 90%;
+}
+
+.logo {
+    width: 100%;
+    max-width: 250px;
+    margin-bottom: 20px;
+}
+
+button {
+    background: #ff0000;
+    border: none;
+    padding: 15px 25px;
+    color: white;
+    font-size: 16px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.status {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #aaa;
+}
+</style>
+</head>
+
+<body>
+
+<div class="player">
+    <img src="logo.jpg" alt="FM del Viento" class="logo">
+
+    <audio id="radio" src="http://10.50.0.114:8000/stream/4/;?type=http&no%20cache=6879"></audio>
+
+    <button onclick="toggleRadio()">▶ ESCUCHAR</button>
+
+    <div class="status" id="status">Presioná para reproducir</div>
+</div>
+
+<script>
+let radio = document.getElementById("radio");
+let status = document.getElementById("status");
+let isPlaying = false;
+
+function toggleRadio() {
+    if (!isPlaying) {
+        radio.play();
+        status.innerText = "🔴 En vivo";
+    } else {
+        radio.pause();
+        status.innerText = "⏸ Pausado";
+    }
+    isPlaying = !isPlaying;
+}
+</script>
+
+</body>
+</html>
